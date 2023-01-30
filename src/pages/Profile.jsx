@@ -1,11 +1,16 @@
 import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useStore } from "react-redux";
+
+import { fetchOrUpdateUser } from "../auth/User";
 
 export default function Profile() {
+  const store = useStore();
+
   useEffect(() => {
     document.title = "ArgentBank's Profile page"
-  }, [])
+    fetchOrUpdateUser(store)
+  }, [store])
 
   const isAuthenticatedUser = useSelector((state) => state.auth);
 
