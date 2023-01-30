@@ -7,12 +7,12 @@ export default function Profile() {
     document.title = "ArgentBank's Profile page"
   }, [])
 
-  const isAuthenticatedUser = useSelector((state) => state.isAuthenticatedUser)
+  const isAuthenticatedUser = useSelector((state) => state.auth);
 
   if (isAuthenticatedUser === false) {
     return <Navigate replace to="/login" />
   }
-  
+
   return (
     <main class="main bg-dark">
       <div class="header">

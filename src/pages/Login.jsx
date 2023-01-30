@@ -10,7 +10,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const isAuthenticatedUser = useSelector((state) => state.isAuthenticatedUser);
+  const isAuthenticatedUser = useSelector((state) => state.auth);
 
   useEffect(() => {
     if(isAuthenticatedUser) {
@@ -46,7 +46,7 @@ export default function Login() {
           >
             Sign In
           </button>
-          
+
         </form>
       </section>
     </main>

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import argentBankLogo from "../assets/argentBankLogo.png";
 
 export default function Header() {
-  const isAuthenticatedUser = useSelector((state) => state.isAuthenticatedUser);
+  const isAuthenticatedUser = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ export default function Header() {
               className="main-nav-item"
               onClick={(event) => {
                 event.preventDefault();
-                dispatch({ type: "loginUser" });
+                dispatch({ type: "logoutUser" });
               }}
             >
               <i className="fa fa-sign-out"></i>
