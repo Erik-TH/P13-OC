@@ -11,9 +11,13 @@ import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import { Provider } from 'react-redux';
+import { store } from './store';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
+
     <Router>
       <Header />
       <Routes>
@@ -23,5 +27,6 @@ root.render(
       </Routes>
       <Footer />
     </Router>
-  </React.StrictMode>
+
+  </Provider>
 );

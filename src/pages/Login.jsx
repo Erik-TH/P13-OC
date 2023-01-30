@@ -1,4 +1,23 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 export default function Login() {
+  useEffect(() => {
+    document.title = "ArgentBank's login page";
+  }, []);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const isAuthenticatedUser = useSelector((state) => state.isAuthenticatedUser);
+
+  useEffect(() => {
+    if(isAuthenticatedUser) {
+      navigate("/profile")
+    }
+  }, [isAuthenticatedUser, navigate])
+
   return (
     <main class="main bg-dark">
       <section class="sign-in-content">
@@ -17,13 +36,17 @@ export default function Login() {
             <input type="checkbox" id="remember-me" />
             <label for="remember-me">Remember me</label>
           </div>
-          {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-          <a href="./user.html" class="sign-in-button">
+
+          <button
+            className="sign-in-button"
+            onClick={(event) => {
+              event.preventDefault();
+              dispatch({type: "loginUser"})
+            }}         
+          >
             Sign In
-          </a>
-          {/* <!-- SHOULD BE THE BUTTON BELOW -->
-          <!-- <button class="sign-in-button">Sign In</button> -->
-          <!--  --> */}
+          </button>
+          
         </form>
       </section>
     </main>

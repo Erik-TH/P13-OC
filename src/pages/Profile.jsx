@@ -1,4 +1,18 @@
+import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 export default function Profile() {
+  useEffect(() => {
+    document.title = "ArgentBank's Profile page"
+  }, [])
+
+  const isAuthenticatedUser = useSelector((state) => state.isAuthenticatedUser)
+
+  if (isAuthenticatedUser === false) {
+    return <Navigate replace to="/login" />
+  }
+  
   return (
     <main class="main bg-dark">
       <div class="header">
