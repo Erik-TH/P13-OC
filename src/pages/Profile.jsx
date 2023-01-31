@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { useSelector, useStore } from "react-redux";
 
+import { selectIsAuthenticatedUser } from "../selectors";
 import { fetchOrUpdateUser } from "../auth/User";
 
 export default function Profile() {
@@ -12,7 +13,7 @@ export default function Profile() {
     fetchOrUpdateUser(store)
   }, [store])
 
-  const isAuthenticatedUser = useSelector((state) => state.auth);
+  const isAuthenticatedUser = useSelector(selectIsAuthenticatedUser);
 
   if (isAuthenticatedUser === false) {
     return <Navigate replace to="/login" />

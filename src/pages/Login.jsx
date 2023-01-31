@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { selectIsAuthenticatedUser } from "../selectors";
+
 export default function Login() {
   useEffect(() => {
     document.title = "ArgentBank's login page";
@@ -10,7 +12,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const isAuthenticatedUser = useSelector((state) => state.auth);
+  const isAuthenticatedUser = useSelector(selectIsAuthenticatedUser);
 
   useEffect(() => {
     if(isAuthenticatedUser) {

@@ -1,10 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import { selectIsAuthenticatedUser } from "../selectors";
+
 import argentBankLogo from "../assets/argentBankLogo.png";
 
 export default function Header() {
-  const isAuthenticatedUser = useSelector((state) => state.auth);
+    
+  const isAuthenticatedUser = useSelector(selectIsAuthenticatedUser);
 
   const dispatch = useDispatch();
 

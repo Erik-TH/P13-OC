@@ -12,7 +12,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import { Provider } from 'react-redux';
-import { store } from './store';
+import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
