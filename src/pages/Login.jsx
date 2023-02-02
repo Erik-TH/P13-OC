@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { loginPending, loginSuccess, loginRemember, loginError } from "../auth/authSlice";
+import { loginPending, loginSuccess, loginRemember, loginError } from "../features/auth/authSlice";
 import { userLogin } from "../services/userServices";
 
 

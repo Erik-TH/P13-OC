@@ -21,3 +21,31 @@ export async function userLogin(credientials) {
     }
   });
 }
+
+export async function userDatas() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const res = await axios.post(process.env.REACT_APP_BACKEND_URL_PROFILE)
+      resolve(res.data)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+export async function userUpDate(userFirstLastName) {
+  console.log(userFirstLastName)
+  return new Promise(async (resolve, reject) => {
+    try {
+      const res = await axios.put(process.env.REACT_APP_BACKEND_URL_PROFILE, userFirstLastName)
+
+      console.log(res)
+
+      resolve(res.data)
+    } catch (error) {
+      console.log('error userUpDate')
+      console.log(error)
+      reject(error)
+    }
+  })
+}

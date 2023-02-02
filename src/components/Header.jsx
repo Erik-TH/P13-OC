@@ -1,15 +1,25 @@
 import { NavLink } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
-
-// import { selectIsAuthenticatedUser } from "../selectors";
+import { useSelector, useDispatch } from "react-redux";
 
 import argentBankLogo from "../assets/argentBankLogo.png";
+import { useEffect } from "react";
+
+import { profileFirstName } from "../features/user/profileSlice"
+import { logOut } from "../features/auth/authSlice";
 
 export default function Header() {
-    
-  // const isAuthenticatedUser = useSelector(selectIsAuthenticatedUser);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { isAuth } = useSelector((state) => state.login)
+  const { firstName } = useSelector((state) => state.profile)
+  const localStorageFirstName = localStorage.getItem('firstName')
+
+  useEffect(() => {
+    if (localStorageFirstName) {
+      dispatch(profileFirstName(localStorageFirstName))
+    }
+  }, [dispatch, localStorageFirstName])
+
 
   return (
     <header className="component header">
@@ -23,11 +33,11 @@ export default function Header() {
           <h1 className="sr-only">Argent Bank</h1>
         </NavLink>
 
-        {/* {isAuthenticatedUser ? (
+         {isAuth ? (
           <div>
             <NavLink to="/profile" className="main-nav-item">
               <i className="fa fa-user-circle"></i>
-              Name
+              {firstName}
             </NavLink>
 
             <NavLink
@@ -35,7 +45,7 @@ export default function Header() {
               className="main-nav-item"
               onClick={(event) => {
                 event.preventDefault();
-                dispatch({ type: "logoutUser" });
+                dispatch(logOut());
               }}
             >
               <i className="fa fa-sign-out"></i>
@@ -49,7 +59,7 @@ export default function Header() {
               Sign In
             </NavLink>
           </div>
-        )} */}
+        )} 
       </nav>
     </header>
   );

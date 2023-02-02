@@ -13,18 +13,18 @@ import Footer from './components/Footer';
 export default function App() {
 
     return (
-        <>
-        <div className="App">
-            <Router>
-                <Header />
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/profile" element={<Profile />} />
-                </Routes>
-                <Footer />
-            </Router>
-        </div>
-        </>
+        <Router>
+            <Header />
+            <Routes>
+                {/* Public Routes */}
+                <Route path='/' element={<Home />} />
+                <Route path="/login" element={<Login />} />
+
+                {/* Protected Routes */}
+                <Route path="/profile" element={<Profile />} />
+                
+            </Routes>
+            <Footer />
+        </Router>
     )
 }
