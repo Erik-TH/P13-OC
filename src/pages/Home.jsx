@@ -1,6 +1,6 @@
-import chatIcon from "../assets/icons/icon-chat.png";
-import moneyIcon from "../assets/icons/icon-money.png";
-import securityIcon from "../assets/icons/icon-security.png";
+import iconChat from "../assets/icons/icon-chat.png";
+import iconMoney from "../assets/icons/icon-money.png";
+import iconSecurity from "../assets/icons/icon-security.png";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <section className="features">
         <h2 className="sr-only">Features</h2>
         <div className="feature-item">
-          <img src={chatIcon} alt="Chat Icon" className="feature-icon" />
+          <img src={iconChat} alt="Chat Icon" className="feature-icon" />
           <h3 className="feature-item-title">You are our #1 priority</h3>
           <p>
             Need to talk to a representative? You can get in touch through our
@@ -26,7 +26,7 @@ export default function Home() {
         </div>
         <div className="feature-item">
           <img
-            src={moneyIcon}
+            src={iconMoney}
             alt="Money Icon"
             className="feature-icon"
           />
@@ -37,7 +37,7 @@ export default function Home() {
         </div>
         <div className="feature-item">
           <img
-            src={securityIcon}
+            src={iconSecurity}
             alt="Security Icon"
             className="feature-icon"
           />

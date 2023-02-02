@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 
-import { selectIsAuthenticatedUser } from "../selectors";
+// import { selectIsAuthenticatedUser } from "../selectors";
 
 import argentBankLogo from "../assets/argentBankLogo.png";
 
 export default function Header() {
     
-  const isAuthenticatedUser = useSelector(selectIsAuthenticatedUser);
+  // const isAuthenticatedUser = useSelector(selectIsAuthenticatedUser);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <header className="component header">
@@ -23,7 +23,7 @@ export default function Header() {
           <h1 className="sr-only">Argent Bank</h1>
         </NavLink>
 
-        {isAuthenticatedUser ? (
+        {/* {isAuthenticatedUser ? (
           <div>
             <NavLink to="/profile" className="main-nav-item">
               <i className="fa fa-user-circle"></i>
@@ -49,7 +49,7 @@ export default function Header() {
               Sign In
             </NavLink>
           </div>
-        )}
+        )} */}
       </nav>
     </header>
   );
