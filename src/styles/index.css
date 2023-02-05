@@ -276,6 +276,31 @@ body {
   color: #fff;
 }
 
+.editNameForm {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.editNameForm div {
+  display: flex;
+  flex-direction: column;
+}
+.editNameForm div:first-child {
+  align-items: flex-end;
+}
+
+.editNameForm button {
+  width: 65%;
+}
+
+.editNameForm__input {
+  margin-bottom: 0.5rem;
+  height: 2.5rem;
+  font-size: 0.95rem;
+}
+
 @media (min-width: 720px) {
   .account {
     flex-direction: row;

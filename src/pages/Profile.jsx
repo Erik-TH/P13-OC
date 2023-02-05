@@ -92,13 +92,13 @@ export default function Profile() {
               <div>
                 <input
                   type="text"
-                  className=""
+                  className="editNameForm__input"
                   placeholder={firstName}
                   name="firstName"
                   onChange={handleChange}
                   required
                 />
-                <button className="edit-button" type="submit">
+                <button className="sign-in-button" type="submit">
                   Save
                 </button>
               </div>
@@ -106,13 +106,13 @@ export default function Profile() {
               <div>
                 <input
                   type="text"
-                  className=""
+                  className="editNameForm__input"
                   placeholder={lastName}
                   name="lastName"
                   onChange={handleChange}
                   required
                 />
-                <button className="edit-button" onClick={editUserBtn}>
+                <button className="sign-in-button" onClick={editUserBtn}>
                   Cancel
                 </button>
               </div>
