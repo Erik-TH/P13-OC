@@ -1,23 +1,50 @@
 import { useEffect } from "react";
-// import { Navigate } from "react-router-dom";
-// import { useSelector, useStore } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-// import { selectIsAuthenticatedUser } from "../selectors";
-// import { fetchOrUpdateUser } from "../auth/User";
+import { userDatas } from "../services/userServices"
+import { profileFirstName, profileLastName, profileError } from "../features/user/profileSlice"
+import axios from "axios";
+
+
+const token = localStorage.getItem('token')
+if(token) {
+  axios.defaults.headers.common['authorization'] = `Bearer ${token}`
+}
 
 export default function Profile() {
-  // const store = useStore();
+
+  const dispatch = useDispatch()
+  const localStorageFirstName = localStorage.getItem('firstName')
+  const localStorageLastName = localStorage.getItem('lastName')
+  const { firstName, lastName } = useSelector((state) => state.profile)
+  const { isRemember } = useSelector((state) => state.login)
 
   useEffect(() => {
     document.title = "ArgentBank's Profile page"
-    // fetchOrUpdateUser(store)
   }, [])
 
-  // const isAuthenticatedUser = useSelector(selectIsAuthenticatedUser);
+  useEffect(() => {
+    if (localStorageFirstName && localStorageLastName) {
+      dispatch(profileFirstName(localStorageFirstName))
+      dispatch(profileLastName(localStorageLastName))
+    }
+  }, [dispatch, localStorageFirstName, localStorageLastName])
 
-  // if (isAuthenticatedUser === false) {
-  //   return <Navigate replace to="/login" />
-  // }
+  userDatas()
+    .then((data) => {
+      dispatch(profileFirstName(data.body.firstName))
+      dispatch(profileLastName(data.body.lastName))
+
+      if (isRemember) {
+        localStorage.setItem('firstName', data.body.firstName)
+        localStorage.setItem('lastName', data.body.lastName)
+      } else {
+        localStorage.removeItem('firstName')
+        localStorage.removeItem('lastName')
+      }
+    })
+    .catch((error) => dispatch(profileError(error.response.data.message)))
+
 
   return (
     <main className="main bg-dark">
@@ -25,7 +52,7 @@ export default function Profile() {
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {firstName + ' ' + lastName} !
         </h1>
         <button className="edit-button">Edit Name</button>
       </div>
