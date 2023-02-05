@@ -33,7 +33,7 @@ export async function userDatas() {
   })
 }
 
-export async function userUpDate(userFirstLastName) {
+export async function userUpdateName(userFirstLastName) {
   console.log(userFirstLastName)
   return new Promise(async (resolve, reject) => {
     try {
@@ -43,7 +43,7 @@ export async function userUpDate(userFirstLastName) {
 
       resolve(res.data)
     } catch (error) {
-      console.log('error userUpDate')
+      console.log('error userUpdateName')
       console.log(error)
       reject(error)
     }
