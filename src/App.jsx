@@ -10,6 +10,8 @@ import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import RequireAuth from "./features/auth/RequireAuth";
+
 export default function App() {
 
     return (
@@ -21,7 +23,9 @@ export default function App() {
                 <Route path="/login" element={<Login />} />
 
                 {/* Protected Routes */}
-                <Route path="/profile" element={<Profile />} />
+                <Route path='/profile' element={<RequireAuth />}>
+                    <Route path='/profile' element={<Profile />} />
+                </Route>
                 
             </Routes>
             <Footer />
