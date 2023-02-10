@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { loginPending, loginSuccess, loginRemember, loginError } from "../features/auth/authSlice";
 import { userLogin } from "../services/userServices";
 
+import { Alert } from "react-bootstrap";
 
 export default function Login() {
   useEffect(() => {
     document.title = "ArgentBank's login page";
   }, []);
 
-  const { isLoading, isRemember } =useSelector((state) => state.login)
+  const { isLoading, isRemember, error } =useSelector((state) => state.login)
 
   const dispatch = useDispatch();
   let navigate = useNavigate();
@@ -52,10 +53,12 @@ export default function Login() {
   }
 
   const content = (
+    <>
     <main className="main bg-dark">
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
+        {error && <Alert variant="danger">{error}</Alert>}
         <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="username">Username</label>
@@ -84,6 +87,8 @@ export default function Login() {
         </form>
       </section>
     </main>
+    
+    </>
   )
 
   return content
